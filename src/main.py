@@ -3,7 +3,8 @@ import argparse
 import sys
 
 from src.CalcRating import CalcRating
-from src.TextDataReader import TextDataReader
+from src.YamlDataReader import YamlDataReader
+from src.HighScoreStudentSelector import HighScoreStudentSelector
 
 
 def get_path_from_arguments(args) -> str:
@@ -18,12 +19,18 @@ def get_path_from_arguments(args) -> str:
 def main():
     path = get_path_from_arguments(sys.argv[1:])
 
-    reader = TextDataReader()
+    reader = YamlDataReader()
     students = reader.read(path)
-    print("Students: ", students)
 
-    rating = CalcRating(students).calc()
-    print("Rating: ", rating)
+    selector = HighScoreStudentSelector(students)
+    result = selector.get_student()
+
+    # print("Qualified Students:", selector.qualified_students)
+
+    if result:
+        print(result)
+    else:
+        print("Нет таких студентов")
 
 
 if __name__ == "__main__":
