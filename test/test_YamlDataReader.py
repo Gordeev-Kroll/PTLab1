@@ -43,7 +43,8 @@ class TestYamlDataReader:
         file_path = tmp_path / "data.yaml"
 
         with open(file_path, "w", encoding="utf-8") as f:
-            yaml.safe_dump(yaml_content_and_expected[0], f, allow_unicode=True, sort_keys=False)
+            yaml.safe_dump(yaml_content_and_expected[0],
+                           f, allow_unicode=True, sort_keys=False)
 
         return str(file_path), yaml_content_and_expected[1]
 

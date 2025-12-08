@@ -14,7 +14,9 @@ class HighScoreStudentSelector:
     def get_student(self) -> str | None:
         self.qualified_students = []
         for student, subjects in self.data.items():
-            high_count = sum(1 for _, score in subjects if score >= self.MIN_SCORE)
+            high_count = sum(
+                1 for _, score in subjects if score >= self.MIN_SCORE
+            )
             if high_count >= self.MIN_SUBJECTS:
                 self.qualified_students.append(student)
 

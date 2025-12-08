@@ -3,6 +3,7 @@ import yaml
 from src.DataReader import DataReader
 from src.Types import DataType
 
+
 class YamlDataReader(DataReader):
     def read(self, path: str) -> DataType:
         with open(path, 'r', encoding='utf-8') as f:

@@ -10,7 +10,12 @@ class TestHighScoreStudentSelector:
         return {
             "Иванов А.А.": [("математика", 90), ("физика", 85), ("химия", 76)],
             "Петров Б.Б.": [("математика", 70), ("физика", 80), ("химия", 75)],
-            "Сидоров В.В.": [("математика", 88), ("физика", 90), ("химия", 95), ("информатика", 82)],
+            "Сидоров В.В.": [
+                ("математика", 88),
+                ("физика", 90),
+                ("химия", 95),
+                ("информатика", 82)
+            ],
             "Козлов Г.Г.": [("математика", 60), ("физика", 65), ("химия", 70)],
         }
 
@@ -22,6 +27,7 @@ class TestHighScoreStudentSelector:
 
     def test_finds_multiple_and_returns_random(self, sample_data, monkeypatch):
         calls = []
+
         def fake_choice(seq):
             calls.append(seq)
             return seq[0]
